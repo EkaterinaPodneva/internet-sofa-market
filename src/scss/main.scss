@@ -1,0 +1,29 @@
+//@import './_normalize.sass';
+@import './vendor/normalize.scss';
+@import './_fonts.sass';
+@import './_settings';
+@import './_vars';
+@import './mixins/_breakpoints';
+
+//components index.html
+@import './_header';
+@import './_banner';
+@import './_offers';
+@import './_raiting';
+@import './_new';
+@import './_top';
+@import './_useful';
+@import './feedback.scss';
+@import './_footer.scss';
+
+//catalog
+@import './catalog/catalog-page.scss';
+@import './catalog/range-slider.scss';
+@import './catalog/filters-adaptiv.scss';
+
+//product
+@import './product/product.scss';
+@import './product/product-slide.scss';
+@import './product/modal.scss';
+
+

@@ -1,0 +1,83 @@
+.new-collection {
+  min-height: 600px;
+  margin-top: 36px;
+  background-image: url(../img/new-colliction/new-collection.jpg);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+
+  @include tablet {
+    background-image: url(../img/new-colliction/new_collection-tablet.png);
+  }
+  @include small-tablet {
+    background-image: url('../img/new-colliction/new-collection-small_tablet.jpg');
+  }
+  @include mobile {
+    position: relative;
+    min-height: 302px;
+    background-position: top;
+    background-size: 100%;
+    background-image: url('../img/new-colliction/new-collection-mobile.png');
+  }
+
+  &__container {
+    padding:  8% 36% 7% 2%;
+
+    @include tablet {
+      padding: 15% 50% 15% 3.5%;
+    }
+    @include small-tablet {
+      padding: 20.5% 33% 20% 4.5%;
+    }
+    @include mobile {
+      padding: 10.5% 5% 7% 3%;
+    }
+  }
+
+  &__title1 {
+    color: var(--gold);
+    font-family: var(--second-family);
+    font-size: 60px;
+    font-weight: 900;
+    line-height: 120%;
+
+    @include mobile {
+      font-size: 24px;
+    }
+  }
+
+  &__title2 {
+    margin-bottom: 46px;
+    color: var(--white);
+    font-size: 48px;
+    line-height: 120%;
+
+    @include mobile {
+      max-width: 187px;
+      margin-bottom: 144px;
+      font-size: 16px;
+    }
+  }
+
+  &__btn {
+    padding: 22px 35px;
+
+    @include mobile {
+      display: none;
+    }
+
+    &--adaptiv {
+      display: none;
+
+      @include mobile {
+        width: 93%;
+        position: absolute;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        bottom: 0px;
+        left: 11px;
+      }
+    }
+  }
+}

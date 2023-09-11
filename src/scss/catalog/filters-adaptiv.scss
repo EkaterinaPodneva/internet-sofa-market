@@ -1,0 +1,114 @@
+.filters {
+  margin-bottom: 35px;
+  display: none;
+  justify-content: space-between;
+  align-items: center;
+
+    @include tablet {
+      display: flex;
+    }
+
+    @include small-tablet {
+      display: block;
+    }
+
+  &__title {
+    margin-bottom: 19px;
+    color: var(--black);
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 130%;
+  }
+
+  &__list {
+    width: 80%;
+    display: flex;
+    gap: var(--offset);
+    flex-wrap: wrap;
+    justify-content: space-between;
+
+      @include small-tablet {
+        width: 65%;
+        gap: 16px;
+      }
+
+      @include mobile {
+        width: 100%;
+      }
+  }
+}
+
+.param {
+  position: relative;
+  width: 21%;
+  height: 100%;
+
+    @include small-tablet {
+      width: 46%;
+    }
+
+  &__range {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  &__options {
+    position: absolute;
+    width: 100%;
+    top: calc(100% - 15px);
+    padding: 30px 10px 30px 15px;
+    display: none;
+    flex-direction: column;
+    gap: 12px;
+    background-color: var(--white);
+    border: 2px solid var(--grey-light);
+    border-bottom: 2px solid transparent;
+    border-radius: 0px 0px 10px 10px;
+    z-index: 5;
+
+    &--active {
+      display: flex;
+    }
+  }
+}
+.param__btn {
+  position: relative;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 15px;
+  border: 2px solid var(--grey-light);
+  border-radius: 10px;
+  background-color: var(--grey-light);
+  transition: all .3s ease-in-out;
+
+    @include small-tablet {
+      padding: 8px 15px;
+    }
+
+  &:focus-visible {
+    border: 2px solid var(--primary);
+    background: var(--pink-light);
+  }
+  &:hover:not(:focus-visible) {
+    border: 2px solid var(--primary);
+  }
+  &:active:not(:focus-visible) {
+    border: 2px solid var(--primary-shade);
+  }
+
+  &-text {
+    font-size: 16px;
+    font-weight: 400;
+  }
+}
+
+.param__btn--active {
+  z-index: 10;
+}
+
+.param__btn--active>.param__btn-icon {
+  transform: rotate(180deg);
+}

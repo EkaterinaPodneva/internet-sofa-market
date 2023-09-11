@@ -1,0 +1,155 @@
+/* Banner*/
+.banner {
+  min-height: 400px;
+
+  @include mobile {
+    position: relative;
+    padding-top: 0px;
+  }
+
+  &__swiper-box {
+    min-height: 400px;
+  }
+
+  &__container {
+    min-height: 400px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  &__swiper-wrapper {
+    height: 100%;
+  }
+
+  &__btn {
+    @include mobile {
+      width: 138%;
+      justify-content: center;
+      transform: translateX(-20px);
+    }
+  }
+
+  &-slide__img {
+    min-height: 400px;
+    height: unset;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 97%;
+
+    @include mobile {
+      height: unset;
+      background-position: top;
+      background-size: 100%;
+    }
+
+    &-1 {
+      background-image: url(../img/banner/slider1.jpg);
+      @include tablet {
+        background-image: url('../img/banner/banner-1-tablet.jpg');
+      }
+      @include small-tablet {
+        background-image: url('../img/banner/banner-small-tablet1.jpg');
+      }
+      @include mobile {
+        background-size: 125%;
+      }
+    }
+    &-2 {
+      background-image: url(../img/banner/slider2.png);
+      @include tablet {
+        background-image: url('../img/banner/banner-2-tablet.jpg');
+      }
+      @include small-tablet {
+        background-image: url('../img/banner/banner-small-tablet2.jpg');
+      }
+      @include mobile {
+        background-image: url('../img/banner/banner-mobile2.jpg');
+
+      }
+    }
+    &-3 {
+      background-image: url(../img/banner/slider3.jpg);
+      @include tablet {
+        background-image: url('../img/banner/banner-3-tablet.jpg');
+      }
+      @include small-tablet {
+        background-image: url('../img/banner/banner-small-tablet3.jpg');
+      }
+      @include mobile {
+        background-image: url('../img/banner/banner-mobile3.jpg');
+      }
+    }
+    &-4{
+      background-color: var(--grey-light);
+    }
+  }
+
+  &__slide-content {
+    min-height: 400px;
+    box-sizing: border-box;
+    padding: 4% 38% 4% 1.33%;
+
+    @include tablet {
+      padding: 8% 43% 8% 3.33%;;
+    }
+    @include small-tablet {
+      padding: 10% 23% 11% 9.33%;
+    }
+    @include mobile {
+      min-height: 320px;
+      padding-top: 8%;
+    }
+
+    &--padding {
+      padding-right: 30%;
+
+      @include mobile {
+        padding-right: 28%;
+      }
+    }
+
+    &--done {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding-top: 5%;
+      background-color: var(--grey-light);
+
+      @include mobile {
+        min-height: 320px;
+      }
+    }
+  }
+    &__title {
+      margin-bottom: 49px;
+      color: var(--grey);
+      font-size: 48px;
+      font-weight: 700;
+      line-height: normal;
+
+      @include mobile {
+        font-size: 20px;
+        margin-bottom: 157px;
+      }
+
+      &-3 {
+        color: var(--white);
+
+        @include mobile {
+          margin-bottom: 130px;
+        }
+      }
+      &-4 {
+        max-width: 276px;
+        min-height: 48px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        color: var(--grey);
+        font-size: 24px;
+        line-height: 100%;
+      }
+    }
+}

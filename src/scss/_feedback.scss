@@ -1,0 +1,251 @@
+.feedback {
+  padding-top: 35px;
+  padding-bottom: 35px;
+
+  @include tablet {
+    margin-bottom: 15px;
+    padding-bottom: 15px;
+  }
+  @include small-tablet {
+    padding-bottom: 34px;
+    margin-bottom: 34px;
+
+  }
+
+  &__title {
+    margin-bottom: 9px;
+  }
+
+  &__container {
+    display: flex;
+    gap: var(--offset);
+  }
+
+  &__tooltip-text {
+    margin-bottom: 16px;
+    color: var(--grey-shade);
+    font-size: 14px;
+    line-height: normal;
+  }
+
+  &__container-left {
+    width: calc((100% - 32px) / 2);
+    display: flex;
+    flex-direction: column;
+    //flex: 1;
+
+    @include tablet {
+      width: 42%;
+      min-height: 470px;
+    }
+    @include small-tablet {
+      width: 70%;
+    }
+    @include mobile {
+      width: 100%;
+    }
+  }
+
+  &__container-right {
+    width: calc((100% - 32px) / 2);
+    min-height: 470px;
+    background-image: url('../img/svg/form-image.svg');
+    background-repeat: no-repeat;
+    background-position: 10% 30%;
+    background-size: contain;
+
+    @include small-tablet {
+      background-image: url('../img/svg/form-image-small.svg');
+      background-position: 70% 20%;
+    }
+    @include mobile {
+      display: none;
+    }
+  }
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+
+  .just-validate-error-label {
+    margin-bottom: 5px;
+    padding-left: 18px;
+    font-size: 12px;
+    line-height: normal;
+    color: var(--red-input);
+  }
+
+  .just-validate-success-field {
+    border: 1px solid var(--green-input);
+  }
+
+  .just-validate-error-field {
+    border: 1px solid var(--red-input);
+  }
+
+  &__btn {
+    display: flex;
+    padding: 19px 35px;
+    margin-bottom: -18px;
+    align-self: flex-start;
+  }
+
+  &__label {
+    display: flex;
+    flex-direction: column-reverse;
+  }
+}
+
+.input {
+  width: 100%;
+  min-height: 54px;
+  padding: 7px 18px;
+  border: none;
+  outline: none;
+  border-radius: 10px;
+  background-color: var(--grey-light);
+  transition: border .3s ease-in-out, background-color .3s ease-in-out;
+
+  &:focus-visible {
+    border: 1px solid var(--primary);
+    background-color: var(--pink-light);
+  }
+
+  &:hover:not(:focus-visible) {
+    background-color: var(--md-grey);
+  }
+}
+
+.input::placeholder {
+  color: var(--grey);
+  font-size: 16px;
+  line-height: 40px;
+}
+
+
+
+//чекбокс
+.check__label {
+  display: flex;
+  align-items: center;
+}
+
+.checkbox {
+  position: absolute !important;
+	height: 16px !important;
+	width: 16px !important;
+  opacity: 0;
+  transition: border .3s ease-in-out;
+
+  &__text {
+    padding-left: 25px;
+    color: var(--black);
+    font-size: 14px;
+    line-height: normal;
+
+    @include mobile {
+      padding-left: 20px;
+      font-size: 12px;
+    }
+  }
+
+  &__link {
+    color: var(--primary);
+    font-size: 14px;
+    line-height: normal;
+    text-decoration-line: underline;
+
+    @include mobile {
+      font-size: 12px;
+    }
+  }
+}
+
+.checkbox__wrapper {
+  position: relative;
+}
+
+.custom__checkbox {
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  border: 1px solid #999;
+  border-radius: 3px;
+  text-align: center;
+  transition: border .3s ease-in-out;
+}
+
+.custom__checkbox:before {
+  content: "";
+  position: absolute;
+  left: 0px;
+  top: 50%;
+  transform: translateY(-50%);
+  width:  15.5px;
+  height: 15.5px;
+  transition: border-color .3s ease-in-out, color .3s ease-in-out;
+}
+
+.custom__checkbox:after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  transform: translate(-50%,-50%);
+  width: 15px;
+  height: 15px;
+  border-radius: 3px;
+  background-image: url("../img/svg/cheked=on.svg");
+  background-repeat: no-repeat;
+  background-size: contain;
+  opacity: 0;
+  transition: opacity .3s ease-in-out;
+}
+
+.checkbox:checked + .custom__checkbox:after {
+  opacity: 1;
+}
+
+.just-validate-error-field+.custom__checkbox:before {
+  border: 2px solid red;
+  border-radius: 3px;
+}
+
+.checkbox:focus-visible + .custom__checkbox {
+  border: 2px solid var(--primary);
+}
+
+.checkbox:hover:not(:focus-visible) + .custom__checkbox {
+  border: 2px solid var(--primary);
+}
+
+
+
+/*tooltip*/
+.tippy-box {
+  width: 180px;
+  min-height: 60px;
+  padding: 5px;
+  background-color: var(--black);
+  color: var(--white);
+  border-radius: 0;
+  text-align: center;
+  font-size: 9px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 14px;
+}
+
+.help svg {
+  transition-property: fill, transform;
+  transition: fill .3s ease-in-out;
+}
+.help:hover:not(:focus-visible) svg{
+  background-color: var(--secondary);
+  border-radius: 50%;
+}
+.help:hover:not(:focus-visible) svg path {
+  fill: #fff;
+}
+

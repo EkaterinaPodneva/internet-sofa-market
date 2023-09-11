@@ -1,0 +1,609 @@
+.header {
+
+  &__top--adaptiv {
+    padding-top: 18px;
+    padding-bottom: 18px;
+    display: none;
+
+    @include tablet {
+      position: relative;
+      display: flex;
+      padding-top: 29px;
+      padding-bottom: 29px;
+      align-items: center;
+    }
+    @include mobile {
+      width: 100%;
+      display: block;
+      padding-top: 12px;
+      padding-bottom: 11px;
+      background-color: var(--grey-light);
+    }
+  }
+
+  &__top {
+    background-color: var(--grey-light);
+
+    @include tablet {
+      padding: 13px 0px;
+    }
+    @include mobile {
+      width: 100%;
+      min-height: 93px;
+      background-color: var(--white);
+      padding-top: 16px;
+      padding-bottom: 20px;
+    }
+
+    &-place {
+      margin-right: 27px;
+    }
+  }
+
+  &__top-2 {
+    display: flex;
+    align-items: center;
+    padding-top: 4px;
+    padding-bottom: 2px;
+
+    &--adaptiv {
+      display: flex;
+      margin-right: auto;
+      align-items: center;
+
+      @include tablet {
+        position: absolute;
+        width: 94%;
+        top: 0.5%;
+        left: 3%;
+        justify-content: space-between;
+      }
+      @include small-tablet {
+        width: 82%;
+        left: 9%;
+      }
+      @include mobile {
+        top: 57px;
+        left: 13px;
+        display: block;
+      }
+    }
+  }
+
+  &__tel {
+    display: inline-flex;
+    align-items: center;
+    margin-right: auto;
+    color: var(--secondary);
+    font-size: 14px;
+    line-height: 100%;
+    transition: color .3s ease-in, background-color .3s ease-in-out;
+
+    &:focus-visible {
+      background-color: #FFF5D1;
+      color: var(--secondary);
+    }
+    &:hover:not(:focus-visible) {
+      color: var(--secondary-light);
+    }
+    &:active:not(:focus-visible) {
+      color: var(--secondary-shade);
+    }
+
+    @include tablet {
+      margin: 0;
+    }
+  }
+
+  &__tel svg {
+    width: 22px;
+    height: 22px;
+    fill: currentColor;
+  }
+
+  &__top-nav {
+    width: 55%;
+
+    @include tablet {
+      width: 75%;
+    }
+    @include small-tablet {
+      width: 100%;
+    }
+    @include mobile {
+      display: none;
+    }
+  }
+
+  &__nav-list {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+//header middle
+  &__middle {
+    display: flex;
+    align-items: center;
+    padding-top: 32px;
+    padding-bottom: 30px;
+
+    @include mobile {
+      min-height: 50px;
+      padding-top: 10px;
+      padding-bottom: 10px;
+      border-top: 1px solid var(--grey-light);
+      border-bottom: 1px solid var(--grey-light);
+    }
+
+    &-nav {
+      width: 74%;
+      //бургер-меню
+      @include small-tablet {
+        position: absolute;
+        width: 66%;
+        left: 0px;
+        top: 108px;
+        opacity: 0;
+        background-color: var(--white);
+        padding: 65px 72px 20px 72px;
+        transform: translateX(-100%);
+        visibility: hidden;
+        z-index: 500;
+        transition: all .5s ease-in-out;
+      }
+      @include mobile {
+        width: 100%;
+      }
+    }
+    //класс для появления меню при нажатии на кнопку
+    &.open .header__middle-nav {
+      transform: translateX(0);
+      opacity: 1;
+      visibility: visible;
+      z-index: 5;
+    }
+
+    &-list {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      @include small-tablet {
+        display: block;
+      }
+    }
+    //кнопка бургер-меню + состояния
+    &--burger-btn {
+      display: none;
+      position: relative;
+      width: 24px;
+      height: 24px;
+      margin-right: 5px;
+      background-color: transparent;
+      z-index: 1000;
+      transition: outline .3s ease-in-out;
+
+      &:focus-visible {
+        outline-offset: 2px;
+        outline: 1px solid var(--primary);
+      }
+      &:focus-visible span {
+        background-color: var(--primary-light);
+      }
+      &:hover:not(:focus-visible) span {
+        background-color: var(--primary-light);
+      }
+      &:active:not(:focus-visible) span {
+        background-color: var(--primary-shade);
+      }
+
+      @include small-tablet {
+        display: block;
+      }
+    }
+
+    &--burger-line {
+      position: absolute;
+      width: 23px;
+      height: 3px;
+      border-radius: 5px;
+      background-color: var(--primary);
+      top: 10px;
+      left: 3px;
+      transition: transform .3s ease-in-out, opacity .3s ease-in-out, background-color .3s ease-in-out;
+
+      &:nth-child(1) {
+        transform: translateY(-10px);
+      }
+      &:nth-child(3) {
+        transform: translateY(10px);
+      }
+    }
+      //класс open для анимации кнопки бургер-меню
+      &.open &--burger-line:nth-child(1) {
+        transform: translateY(0) rotate(45deg);
+      }
+      &.open &--burger-line:nth-child(2) {
+        opacity: 0;
+      }
+      &.open &--burger-line:nth-child(3) {
+        transform: translateY(0) rotate(-45deg);
+      }
+
+
+    &-logo {
+      display: flex;
+      align-items: center;
+      margin-right: auto;
+
+      @include small-tablet {
+        justify-content: center;
+        margin: 0 auto;
+      }
+      @include mobile {
+        display: none;
+      }
+
+      &2 {
+        display: none;
+
+        @include mobile {
+          display: flex;
+        }
+      }
+    }
+
+    &-pic {
+      margin-right: 10px;
+    }
+
+    &-link {
+      color: var(--black);
+      font-size: 16px;
+      line-height: 100%;
+      transition: color .3s ease-in-out, background-color .3s ease-in-out;
+
+      &:focus-visible {
+        background-color: var(--pink-violet);
+      }
+      &:hover:not(:focus-visible) {
+        color: var(--primary);
+      }
+      &:active:not(:focus-visible) {
+        color: var(--primary-shade);
+      }
+
+      @include small-tablet {
+        display: block;
+        padding: 10px 0;
+      }
+    }
+  }
+
+  // header bottom
+  &__bottom {
+    display: flex;
+    align-items: center;
+    padding-top: 4px;
+    padding-bottom: 15px;
+
+    @include mobile {
+      display: block;
+      padding-top: 16px;
+    }
+
+    &-icons {
+      position: relative;
+      display: flex;
+      align-items: center;
+      margin-left: auto;
+
+      @include tablet {
+        position: absolute;
+        top: 5.5%;
+        right: 3.5%;
+      }
+      @include small-tablet {
+        top: 140px;
+        right: 70px;
+      }
+      @include mobile {
+        top: 152px;
+        right: 12px
+      }
+    }
+  }
+  &__form {
+    width: 60%;
+    height: 60px;
+    position: relative;
+    display: inline-flex;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 10px 0px 0px 10px;
+    background-color: var(--grey-light);
+    overflow: hidden;
+
+    @include tablet {
+      width: 68%;
+    }
+    @include small-tablet {
+      width: 75%;
+    }
+    @include mobile {
+      width: 100%;
+      margin-bottom: 16px;
+      border-radius: 10px;
+    }
+  }
+
+  &__input-txt {
+    width: 100%;
+    height: 100%;
+    padding: 15px 15px 15px 60px;
+    border: none;
+    outline: none;
+    border-radius: 10px 0px 0px 10px;
+    background-color: transparent;
+    color: var(--black);
+    font-size: 16px;
+    line-height: 120%;
+    transition: background-color .3s ease-in-out;
+
+    &:focus-visible {
+      background-color: var(--pink-light);
+      outline: 2px solid var(--primary);
+    }
+    &:hover:not(:focus-visible) {
+      background-color: var(--md-grey);
+    }
+    &:active:not(:focus-visible) {
+      background-color: var(--grey-light);
+    }
+  }
+  &__btn-search {
+    position: absolute;
+    top: 15px;
+    bottom: 0;
+    left: 90%;
+    border: none;
+    background-color: transparent;
+
+    @include small-tablet {
+      left: 85%;
+    }
+    @include mobile {
+      left: 78%;
+    }
+  }
+
+  &__btn-search svg {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: transparent;
+  }
+
+  &__icon-search {
+    position: absolute;
+    top: 22px;
+    bottom: 0;
+    left: 32px;
+    right: 0px;
+  }
+
+  &__icon-users {
+    margin-right: 32px;
+
+    @include tablet {
+      margin-right: 42px;
+    }
+  }
+
+  &__img-user {
+    transition: background-color .3s ease-in-out;
+
+    &:focus-visible {
+      background-color: var(--primary-light);
+      svg {
+        fill: var(--white);
+      }
+    }
+    & svg {
+      fill: var(--primary);
+      transition: fill .3s ease-in-out;
+    }
+    & svg:focus-visible {
+      fill: var(--white);
+    }
+    & svg:hover:not(:focus-visible) {
+      fill: var(--primary-light);
+    }
+    & svg:active:not(:focus-visible) {
+      background-color: transparent;
+      fill: var(--primary-shade);
+    }
+  }
+
+  &__container-basket {
+    position: relative;
+    display: flex;
+    align-items: center;
+  }
+
+  &__product-quantity {
+    position: absolute;
+    top: 16%;
+    right: 94%;
+    padding: 2px 4px 3px;
+    background-color: var(--secondary);
+    border-radius: 7px;
+    color: var(--white);
+    font-size: 10px;
+    font-weight: 700;
+    line-height: 100%;
+  }
+}
+
+//Кастомный селект furniture
+.wrapper__furniture {
+  width: 23%;
+  min-height: 60px;
+  display: flex;
+  align-items: center;
+
+  @include tablet {
+    width: 32%;
+  }
+  @include mobile {
+    width: 100%;
+  }
+}
+
+.wrapper__furniture .choices__inner {
+  position: relative;
+  width: 100%;
+  min-height: 60px;
+  border-radius: 0px 10px 10px 0px;
+  border: 2px solid var(--grey-light);
+
+  @include mobile {
+    border-radius: 10px;
+  }
+}
+
+.wrapper__furniture .choices__list--dropdown {
+  position: absolute;
+  top: calc(100% - 10px);
+  padding-top: 10px;
+  border-radius: 0 0 10px 10px;
+  border-bottom: 2px solid var(--grey-light);
+  border-left: 2px solid var(--grey-light);
+  border-right: 2px solid var(--grey-light);
+  border-top: none;
+  background-color: var(--white);
+  z-index: 2;
+}
+
+.wrapper__furniture .choices__list--single {
+  padding-left: 32px;
+}
+
+.wrapper__furniture .header_choices.choices[data-type*=select-one] {
+  width: 100%;
+  height: 100%;
+}
+
+.wrapper__furniture .choices__list--dropdown .choices__list {
+    max-height: none;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    column-gap: 20px;
+    padding: 18px 55px 18px 25px;
+
+    @include small-tablet {
+      display: flex;
+      flex-flow: wrap;
+    }
+    @include mobile {
+      display: grid;
+    }
+}
+
+//события choices region!
+.is-focused .choices__list--single {
+  color: var(--primary-shade) !important;
+  border-color: var(--primary) !important;
+
+  &:after {
+    // апдейт стрелки
+    border-color: var(--primary-shade) !important;
+  }
+}
+.wrapper__furniture .choices__list--single .choices__item {
+  min-height: 60px;
+  display: flex;
+  align-items: center;
+}
+.choices__list--single .choices__item:hover:not(.is-focused) { // наведение на селект, апдейт строки
+    color: var(--pink-violet) !important;
+    background-color: transparent !important;
+    border-color: var(--primary) !important;
+}
+.choices[data-type*=select-one]:hover:not(.is-focused) { // наведение на селект, апдейт стрелки
+    &:after {
+      border-color: var(--pink-violet) !important;
+      background-color: transparent !important;
+    }
+}
+
+.choices__list--single .choices__item:active:not(.is-focused) { // наведение на селект, апдейт строки
+  color: var(--primary-shade) !important;
+  background-color: transparent !important;
+  border-color: var(--primary-shade) !important;
+}
+
+
+.choices[data-type*=select-one]:active:not(.is-focused) { // наведение на селект, апдейт стрелки
+  &:after {
+    border-color: var(--primary-shade) !important;
+    background-color: transparent !important;
+  }
+}
+// открытое состояние
+.is-open .choices__list--single { // апдейт строки
+  color: var(--primary) !important;
+  background-color: transparent !important;
+
+  &:after { // апдейт стрелки
+    border-color: var(--primary) !important;
+    background-color: transparent !important;
+  }
+}
+
+.region__adaptiv {
+  @include mobile {
+    margin-bottom: 4px;
+  }
+}
+
+.region__place-descr {
+  width: 140%;
+  font-size: 16px;
+  line-height: 120%;
+
+  @include mobile {
+    width: auto;
+  }
+}
+
+.header_choices.choices[data-type*=select-one]:after {
+  width: 8px;
+  height: 8px;
+  top: 42%;
+  right: 30px;
+  margin-right: 4px;
+  transform: rotate(-45deg);
+  border: 1px solid var(--primary);
+  border-width: 0 0 1px 1px;
+  //z-index: 5;
+  transition: transform .3s ease-in-out, border-color .3s ease-in-out;
+}
+
+.region .header_choices.choices[data-type*=select-one]:after {
+  right: 0px;
+}
+
+.header_choices.choices[data-type*=select-one].is-open:after {
+  top: 60%;
+  border: 1px solid var(--primary-shade);
+  border-width: 1px 1px 0 0;
+  transition: color .3s ease-in-out, transform .3s ease-in-out;
+}
+
+.is-selected {
+  display: none;
+}
+
+

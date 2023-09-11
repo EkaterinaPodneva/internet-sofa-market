@@ -1,0 +1,109 @@
+.useful {
+  //min-height: 734px;
+  padding-top: 38px;
+  padding-bottom: 33px;
+
+  @include tablet {
+    padding-bottom: 36px;
+  }
+  @include small-tablet {
+    padding-bottom: 32px;
+  }
+  @include mobile {
+    padding-top: 45px;
+  }
+
+
+  &__navigation-title {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 25px;
+  }
+
+  &__btn {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    @include mobile {
+      display: none;
+    }
+
+    &--adaptiv {
+      display: none;
+
+      @include mobile {
+        display: flex;
+        justify-content: center;
+      }
+    }
+  }
+
+  &__slide-wrapper {
+    @include mobile {
+      margin-bottom: 16px;
+    }
+  }
+
+  &__descr {
+    font-size: 24px;
+    line-height: normal;
+
+    @include tablet {
+      margin-bottom: 30px;
+      font-size: 16px;
+    }
+  }
+
+  &__swiper {
+    position: relative;
+    height: 100%;
+    overflow: hidden;
+  }
+
+  &__slides {
+    max-width: 560px;
+    min-height: 190px;
+    height: unset;
+    display: flex;
+    flex-direction: column;
+    //align-self: flex-start;
+    //padding: 456px 30px 30px 30px;
+    padding: 35.5% 2.49% 2.45% 2.49%;
+    background-color: var(--grey-light);
+    border-radius: 10px;
+    background-repeat: no-repeat;
+    background-position: top;
+    background-size: contain;
+
+    @include tablet {
+      max-width: calc((100% - 96px) / 3.46 );
+      padding: 24% 2.47% 3% 2.8%;
+    }
+    @include small-tablet {
+      max-width: calc((100% - 133px) / 2);
+      padding: 37% 4% 5% 4%;
+    }
+    @include mobile {
+      max-width: calc((100% - 67px) / 1 );
+      padding: 78% 13% 11% 10%;
+    }
+  }
+
+  &__slide1 {
+    background-image: url(../img/useful/useful1.jpg);
+  }
+  &__slide2 {
+    background-image: url(../img/useful/useful2.jpg);
+  }
+  &__slide3 {
+    background-image: url(../img/useful/useful3.jpg);
+  }
+  &__slide4 {
+    background-image: url(../img/useful/useful4.jpg);
+  }
+  &__slide5 {
+    background-image: url(../img/useful/useful5.jpg);
+  }
+}
