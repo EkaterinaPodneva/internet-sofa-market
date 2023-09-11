@@ -1,0 +1,303 @@
+"use strict";
+
+function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (obj) { return typeof obj; } : function (obj) { return obj && "function" == typeof Symbol && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }, _typeof(obj); }
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, _toPropertyKey(descriptor.key), descriptor); } }
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); Object.defineProperty(Constructor, "prototype", { writable: false }); return Constructor; }
+function _toPropertyKey(arg) { var key = _toPrimitive(arg, "string"); return _typeof(key) === "symbol" ? key : String(key); }
+function _toPrimitive(input, hint) { if (_typeof(input) !== "object" || input === null) return input; var prim = input[Symbol.toPrimitive]; if (prim !== undefined) { var res = prim.call(input, hint || "default"); if (_typeof(res) !== "object") return res; throw new TypeError("@@toPrimitive must return a primitive value."); } return (hint === "string" ? String : Number)(input); }
+var GraphModal = /*#__PURE__*/function () {
+  function GraphModal(t) {
+    _classCallCheck(this, GraphModal);
+    this.options = Object.assign({
+      isOpen: function isOpen() {},
+      isClose: function isClose() {}
+    }, t), this.modal = document.querySelector(".modal"), this.speed = !1, this.animation = !1, this._reOpen = !1, this._nextContainer = !1, this.modalContainer = !1, this.isOpen = !1, this.previousActiveElement = !1, this._focusElements = ["a[href]", "input", "select", "textarea", "button", "iframe", "[contenteditable]", '[tabindex]:not([tabindex^="-"])'], this._fixBlocks = document.querySelectorAll(".fix-block"), this.events();
+  }
+  _createClass(GraphModal, [{
+    key: "events",
+    value: function events() {
+      this.modal && (document.addEventListener("click", function (t) {
+        var e = t.target.closest("[data-graph-path]");
+        if (e) {
+          var _t = e.dataset.graphPath,
+            s = e.dataset.graphAnimation,
+            i = e.dataset.graphSpeed;
+          return this.animation = s || "fade", this.speed = i ? parseInt(i) : 300, this._nextContainer = document.querySelector("[data-graph-target=\"".concat(_t, "\"]")), void this.open();
+        }
+        t.target.closest(".modal__close") && this.close();
+      }.bind(this)), window.addEventListener("keydown", function (t) {
+        27 == t.keyCode && this.modalContainer.classList.contains("modal-open") && this.close(), 9 == t.which && this.isOpen && this.focusCatch(t);
+      }.bind(this)), this.modal.addEventListener("click", function (t) {
+        t.target.classList.contains("modal__container") || t.target.closest(".modal__container") || !this.isOpen || this.close();
+      }.bind(this)));
+    }
+  }, {
+    key: "open",
+    value: function open(t) {
+      var _this = this;
+      if (this.previousActiveElement = document.activeElement, this.isOpen) return this.reOpen = !0, void this.close();
+      this.modalContainer = this._nextContainer, t && (this.modalContainer = document.querySelector("[data-graph-target=\"".concat(t, "\"]"))), this.modal.style.setProperty("--transition-time", "".concat(this.speed / 1e3, "s")), this.modal.classList.add("is-open"), this.disableScroll(), this.modalContainer.classList.add("modal-open"), this.modalContainer.classList.add(this.animation), setTimeout(function () {
+        _this.options.isOpen(_this), _this.modalContainer.classList.add("animate-open"), _this.isOpen = !0, _this.focusTrap();
+      }, this.speed);
+    }
+  }, {
+    key: "close",
+    value: function close() {
+      this.modalContainer && (this.modalContainer.classList.remove("animate-open"), this.modalContainer.classList.remove(this.animation), this.modal.classList.remove("is-open"), this.modalContainer.classList.remove("modal-open"), this.enableScroll(), this.options.isClose(this), this.isOpen = !1, this.focusTrap(), this.reOpen && (this.reOpen = !1, this.open()));
+    }
+  }, {
+    key: "focusCatch",
+    value: function focusCatch(t) {
+      var e = this.modalContainer.querySelectorAll(this._focusElements),
+        s = Array.prototype.slice.call(e),
+        i = s.indexOf(document.activeElement);
+      t.shiftKey && 0 === i && (s[s.length - 1].focus(), t.preventDefault()), t.shiftKey || i !== s.length - 1 || (s[0].focus(), t.preventDefault());
+    }
+  }, {
+    key: "focusTrap",
+    value: function focusTrap() {
+      var t = this.modalContainer.querySelectorAll(this._focusElements);
+      this.isOpen ? t.length && t[0].focus() : this.previousActiveElement.focus();
+    }
+  }, {
+    key: "disableScroll",
+    value: function disableScroll() {
+      var t = window.scrollY;
+      this.lockPadding(), document.body.classList.add("disable-scroll"), document.body.dataset.position = t, document.body.style.top = -t + "px";
+    }
+  }, {
+    key: "enableScroll",
+    value: function enableScroll() {
+      var t = parseInt(document.body.dataset.position, 10);
+      this.unlockPadding(), document.body.style.top = "auto", document.body.classList.remove("disable-scroll"), window.scroll({
+        top: t,
+        left: 0
+      }), document.body.removeAttribute("data-position");
+    }
+  }, {
+    key: "lockPadding",
+    value: function lockPadding() {
+      var t = window.innerWidth - document.body.offsetWidth + "px";
+      this._fixBlocks.forEach(function (e) {
+        e.style.paddingRight = t;
+      }), document.body.style.paddingRight = t;
+    }
+  }, {
+    key: "unlockPadding",
+    value: function unlockPadding() {
+      this._fixBlocks.forEach(function (t) {
+        t.style.paddingRight = "0px";
+      }), document.body.style.paddingRight = "0px";
+    }
+  }]);
+  return GraphModal;
+}();
+"use strict";
+
+//Slider big foto sofa
+var productSwiper = new Swiper('.slider-block', {
+  loop: true,
+  speed: 600,
+  slidersPerView: 1,
+  //Перевод на русский язык
+  a11y: {
+    paginationBulleMessage: 'Тут название слайда {{index}}'
+  }
+});
+
+//Slider big foto sofa modal
+var productModalSwiper = new Swiper('.product__modal', {
+  loop: true,
+  speed: 600,
+  slidersPerView: 1,
+  //Перевод на русский язык
+  a11y: {
+    paginationBulleMessage: 'Тут название слайда {{index}}'
+  }
+});
+
+//slider nav (small foto sofa)
+var productNavSwiper = new Swiper('.product__slider-nav', {
+  loop: true,
+  speed: 600,
+  //direction: 'horizontal',
+  //slidersPerView: 4,
+  //spaceBetween: 38,
+  breakpoints: {
+    320: {
+      direction: 'horizontal'
+    },
+    992: {
+      // when window width is >= 992px
+      slidesPerView: 4,
+      direction: 'vertical'
+    },
+    1024: {
+      // when window width is >= 1024px
+      slidesPerView: 3,
+      spaceBetween: 38,
+      direction: 'horizontal'
+    },
+    1352: {
+      slidesPerView: 4,
+      spaceBetween: 38,
+      direction: 'horizontal'
+    }
+  }
+});
+
+//slider nav (small foto sofa)
+var productNavSwiperModal = new Swiper('.product__slider-nav--modal', {
+  loop: true,
+  speed: 600,
+  autoHeight: false,
+  spaceBetween: 38,
+  slidesPerGroup: 1,
+  slidesPerView: 1,
+  breakpoints: {
+    992: {
+      // when window width is >= 992px
+      slidesPerView: 2
+    },
+    1024: {
+      // when window width is >= 1024px
+      slidesPerView: 3
+    },
+    1352: {
+      slidesPerView: 4
+    }
+  },
+  navigation: {
+    nextEl: '.swiper__btn-next--sofa',
+    prevEl: '.swiper__btn-prev--sofa'
+  },
+  //Перевод на русский язык
+  a11y: {
+    paginationBulleMessage: 'Тут название слайда {{index}}'
+  }
+});
+
+//Slider похожие товары
+var productsSwiper = new Swiper('.product-slide__swiper', {
+  loop: false,
+  speed: 600,
+  spaceBetween: 32,
+  slidesPerGroup: 1,
+  slidesPerView: 1,
+  autoHeight: false,
+  breakpoints: {
+    320: {
+      spaceBetween: 16
+    },
+    992: {
+      // when window width is >= 992px
+      slidesPerView: 2
+    },
+    1024: {
+      // when window width is >= 1024px
+      slidesPerView: 3
+    },
+    1352: {
+      slidesPerView: 4
+    }
+  },
+  navigation: {
+    nextEl: '.swiper__btn-next',
+    prevEl: '.swiper__btn-prev'
+  },
+  //Перевод на русский язык
+  a11y: {
+    paginationBulleMessage: 'Тут название слайда {{index}}'
+  }
+});
+
+//modal
+document.addEventListener('DOMContentLoaded', function () {
+  var modal = new GraphModal({
+    isOpen: function isOpen(modal) {
+      console.log('opened');
+    },
+    isClose: function isClose() {
+      gulpIf;
+      console.log('closed');
+    }
+  });
+
+  //function open modal product
+  var modalProduct = document.querySelector('.slider-block');
+  modalProduct.addEventListener('click', function () {
+    new GraphModal().open('first');
+  });
+
+  //Присваиваем tab-index
+  var sliderNavItems = document.querySelectorAll('.slider-nav__item');
+  //const index = parseInt(e.currentTarget.dataset.index);
+  sliderNavItems.forEach(function (el, index) {
+    el.setAttribute('data-index', index);
+    el.addEventListener('click', function (e) {
+      var index = parseInt(e.currentTarget.dataset.index);
+      console.log(index);
+      productSwiper.slideTo(index);
+    });
+  });
+  //modal
+  var sliderNavModal = document.querySelectorAll('.slider-nav__item--modal');
+  sliderNavModal.forEach(function (el, index) {
+    el.setAttribute('data-index', index);
+    el.addEventListener('click', function (e) {
+      var index = parseInt(e.currentTarget.dataset.index);
+      console.log(index);
+      productModalSwiper.slideTo(index);
+    });
+  });
+});
+
+//validation
+document.addEventListener("DOMContentLoaded", function () {
+  var validation = new JustValidate('.order-modal__form', {
+    errorFieldCssClass: 'just-validate-error-field',
+    errorLabelStyle: {
+      color: '#FF6972'
+    },
+    successFieldCssClass: 'just-validate-success-field',
+    focusInvalidField: true,
+    validateBeforeSubmitting: true,
+    lockForm: true
+  });
+  var selector = document.querySelector("input[type='tel']");
+  var im = new Inputmask("+7 (999)-999-99-99");
+  im.mask(selector);
+  var checkbox = document.querySelector('.custom__checkbox');
+  validation.addField('.name', [{
+    rule: 'minLength',
+    value: 3,
+    errorMessage: "Не достаточное количество символов!"
+  }, {
+    rule: 'required',
+    value: true,
+    errorMessage: 'Заполните имя!'
+  }, {
+    rule: 'customRegexp',
+    value: /^[a-zA-Zа-яёА-ЯЁ\s\-]+$/,
+    errorMessage: 'Недопустимый формат!'
+  }]).addField('.tel', [{
+    rule: 'function',
+    validator: function validator(name, value) {
+      var phone = selector.inputmask.unmaskedvalue();
+      return phone.length === 10;
+    },
+    errorMessage: 'Вы не ввели телефон'
+  }]).addField('.checkbox', [{
+    rule: 'required',
+    errorMessage: 'Необходимо поставить согласие'
+  }]).onSuccess(function (e) {
+    document.getElementById('order__form-modal').submit();
+    e.preventDefault();
+    e.target.reset();
+    document.querySelector('.modal-open').classList.remove('animate-open');
+    document.querySelector('.modal-open').classList.remove('false');
+    document.querySelector('.modal-open').classList.remove('modal-open');
+    new GraphModal().open('success');
+  });
+});

@@ -1,2 +1,0 @@
-
-# photo_studio

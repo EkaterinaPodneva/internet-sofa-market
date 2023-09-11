@@ -1,0 +1,126 @@
+"use strict";
+
+var backMore = document.querySelector('.catalog-page__btn1');
+var nextMore = document.querySelector('.catalog-page__btn2');
+var nextMore2 = document.querySelector('.catalog-page__btn3');
+var productsLength = document.querySelectorAll('.catalog-page__item').length;
+var array = Array.from(document.querySelector('.catalog-page__list').children);
+function createTabDesktop() {
+  var items = 9;
+  items += 9;
+  var visibleItems = array.slice(9, items);
+  var inVisibleItems = array.slice(0, 9);
+  nextMore.addEventListener('click', function () {
+    visibleItems.forEach(function (el) {
+      return el.classList.add('is-visible');
+    });
+    inVisibleItems.forEach(function (el) {
+      return el.classList.add('in-visible');
+    });
+    backMore.classList.remove('catalog-page__btn--active');
+    nextMore.classList.add('catalog-page__btn--active');
+    nextMore.blur();
+  });
+  backMore.addEventListener('click', function () {
+    visibleItems.forEach(function (el) {
+      return el.classList.remove('is-visible');
+    });
+    inVisibleItems.forEach(function (el) {
+      return el.classList.remove('in-visible');
+    });
+    nextMore.classList.remove('catalog-page__btn--active');
+    backMore.classList.add('catalog-page__btn--active');
+    backMore.blur();
+  });
+}
+;
+function createTabTablet() {
+  var items = 18;
+  items += 6;
+  var visibleItems = array.slice(6, 12);
+  var inVisibleItems = array.slice(0, 6);
+  var visibleItemsMore = array.slice(12, items);
+  nextMore.addEventListener('click', function () {
+    visibleItems.forEach(function (el) {
+      return el.classList.add('is-visible');
+    }); //6, 12 - видно
+    inVisibleItems.forEach(function (el) {
+      return el.classList.add('in-visible');
+    }); //0, 6 - не видно
+    visibleItemsMore.forEach(function (el) {
+      return el.classList.add('in-visible');
+    }); //12, 18 - не видно
+
+    backMore.classList.remove('catalog-page__btn--active');
+    nextMore2.classList.remove('catalog-page__btn--active');
+    nextMore.classList.add('catalog-page__btn--active');
+    nextMore.blur();
+  });
+  nextMore2.addEventListener('click', function () {
+    visibleItemsMore.forEach(function (el) {
+      return el.classList.remove('in-visible');
+    });
+    visibleItemsMore.forEach(function (el) {
+      return el.classList.add('is-visible');
+    });
+    visibleItems.forEach(function (el) {
+      return el.classList.remove('is-visible');
+    });
+    nextMore.classList.remove('catalog-page__btn--active');
+    nextMore2.classList.add('catalog-page__btn--active');
+    nextMore2.blur();
+  });
+  backMore.addEventListener('click', function () {
+    visibleItems.forEach(function (el) {
+      return el.classList.remove('is-visible');
+    });
+    inVisibleItems.forEach(function (el) {
+      return el.classList.remove('in-visible');
+    });
+    visibleItemsMore.forEach(function (el) {
+      return el.classList.add('in-visible');
+    });
+    nextMore.classList.remove('catalog-page__btn--active');
+    nextMore2.classList.remove('catalog-page__btn--active');
+    backMore.classList.add('catalog-page__btn--active');
+    backMore.blur();
+  });
+}
+;
+var screenWidth = window.screen.width;
+if (screenWidth > 992) {
+  createTabDesktop();
+} else {
+  createTabTablet();
+}
+"use strict";
+
+// Show/hide filter params
+var filterCategoryButton = document.querySelector('.js-filter-category-btn');
+var filterPriceButton = document.querySelector('.js-filter-price-btn');
+var filterDiscountButton = document.querySelector('.js-filter-discount-btn');
+var filterColorButton = document.querySelector('.js-filter-color-btn');
+var filterCategoryOptions = document.querySelector('.js-filter-category-options');
+var filterPriceOptions = document.querySelector('.js-filter-price-options');
+var filterDiscountOptions = document.querySelector('.js-filter-discount-options');
+var filterColorOptions = document.querySelector('.js-filter-color-options');
+function toggleFilterOption(button, option) {
+  var activeButton = document.querySelector('.param__btn--active');
+  var activeOption = document.querySelector('.param__options--active');
+  if (activeButton && activeButton !== button) activeButton.classList.remove('param__btn--active');
+  if (activeOption && activeOption !== option) activeOption.classList.remove('param__options--active');
+  button.classList.toggle('param__btn--active');
+  option.classList.toggle('param__options--active');
+}
+filterCategoryButton.addEventListener('click', function () {
+  return toggleFilterOption(filterCategoryButton, filterCategoryOptions);
+});
+filterPriceButton.addEventListener('click', function () {
+  return toggleFilterOption(filterPriceButton, filterPriceOptions);
+});
+filterDiscountButton.addEventListener('click', function () {
+  return toggleFilterOption(filterDiscountButton, filterDiscountOptions);
+});
+filterColorButton.addEventListener('click', function () {
+  return toggleFilterOption(filterColorButton, filterColorOptions);
+});
