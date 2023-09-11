@@ -1,4 +1,4 @@
-![alt text](https://raw.githubusercontent.com/baranovstas/high-pass/60f1c1eb0d5f2ebe2d31ea925d40ecf080773d75/src/img/svg/logo_black.svg)
+![alt text](https://github.com/EkaterinaPodneva/internet-sofa-market/blob/main/src/img/logo-text.svg)
 # Интернет-магазин мебели SitDownPls (вёрстка)
 Вёрстка основных страниц интернет-магазина мебели. Не является полноценным веб-приложением, основная цель проекта - вёрстка разных по уровню сложности компонентов страниц, потому линки не настроены, однако сборка осуществляется с помощью сборщика gulp. Свёрстанные страницы:
 - Главная страница сайта /index.html;
