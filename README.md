@@ -5,7 +5,7 @@
 * Каталог товаров [/catalog.html](https://ekaterinapodneva.github.io/internet-sofa-market/catalog.html);
 + Карточка товара  [/product.html](https://ekaterinapodneva.github.io/internet-sofa-market/product.html);
 ## Особенности интерфейса
-1. Адаптивный дизайн и верстка Pixel-perfect;
+1. Адаптивный дизайн и верстка Pixel-perfect (адаптив еще на доработке);
 1. Бургер-меню в мобильном варианте;
 1. Интервальный слайдер в каталоге;
 2. Большинство кастомизированных элементов;
